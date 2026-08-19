@@ -29,7 +29,12 @@ void UMover::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponent
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	UE_LOG(LogTemp, Display, TEXT("Testing"));
+	AActor* Owner = GetOwner();
+	FString Name = Owner->GetActorNameOrLabel();
+	FVector ActorLocation = Owner->GetActorLocation();
+	FString ActorLocationString = ActorLocation.ToCompactString();
+
+	UE_LOG(LogTemp, Display, TEXT("Mover Owner : %s, Mover Location: %s"), *Name, *ActorLocationString);
 
 }
 
